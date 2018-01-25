@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invalid_Checker", "Invalid_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiddleWebApiLib", "MiddleWebApiLib\MiddleWebApiLib.csproj", "{325E6F55-B41C-4482-A337-E98AB6571618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyIpHelperLib", "ProxyIpHelper\ProxyIpHelperLib.csproj", "{58CEEA9C-E186-4C23-A5F5-847E2114051F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{325E6F55-B41C-4482-A337-E98AB6571618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{325E6F55-B41C-4482-A337-E98AB6571618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{325E6F55-B41C-4482-A337-E98AB6571618}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58CEEA9C-E186-4C23-A5F5-847E2114051F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58CEEA9C-E186-4C23-A5F5-847E2114051F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58CEEA9C-E186-4C23-A5F5-847E2114051F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58CEEA9C-E186-4C23-A5F5-847E2114051F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

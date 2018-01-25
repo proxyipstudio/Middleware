@@ -49,10 +49,6 @@
       <Project>{325e6f55-b41c-4482-a337-e98ab6571618}</Project>
       <Name>MiddleWebApiLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProxyIpHelper\ProxyIpHelperLib.csproj">
-      <Project>{58ceea9c-e186-4c23-a5f5-847e2114051f}</Project>
-      <Name>ProxyIpHelperLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

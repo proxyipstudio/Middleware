@@ -23,8 +23,22 @@ using System.Text;
 
 namespace MiddleWebApiLib
 {
-    class APIHelper
+   public  class APIHelper
     {
 
+       public static Command  AcceptCmd()
+        {
+            return null;
+        }
+
+        public static void PushRelive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void PushSleep()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
