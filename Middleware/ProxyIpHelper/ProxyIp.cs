@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Invalid_Checker
+namespace ProxyIpHelperLib
 {
     /// <summary>
     ///  匿名度枚举声明
