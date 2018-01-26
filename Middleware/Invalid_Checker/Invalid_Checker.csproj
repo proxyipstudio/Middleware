@@ -45,10 +45,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MiddleWebApiLib\MiddleWebApiLib.csproj">
+    <ProjectReference Include="..\MiddleWebApiLib\MiddleWareLib.csproj">
       <Project>{325e6f55-b41c-4482-a337-e98ab6571618}</Project>
-      <Name>MiddleWebApiLib</Name>
+      <Name>MiddleWareLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PublicValuesLib\PublicValuesLib.csproj">
+      <Project>{0359225b-1da4-4e4d-bbe8-aafef871436f}</Project>
+      <Name>PublicValuesLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

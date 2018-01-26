@@ -23,26 +23,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using MiddleWebApiLib;
+using MiddleWareLib;
+using PublicValuesLib;
 
 namespace Invalid_Checker
 {
     class Program
     {
-        #region 预设常量
-
+        #region 全局变量
         /// <summary>
         /// 校验线程数量
         /// </summary>
-        const int ThreadNum = 1;
+        static int ThreadNum = 1;
         /// <summary>
         /// 获取代理IP间隔
         /// </summary>
-        const int GetProxy_Delay = 5000;
+        static int GetProxy_Delay = 5000;
         /// <summary>
         /// 获取命令间隔
         /// </summary>
-        const int GetCmd_Delay = 5000;
+        static int GetCmd_Delay = 5000;
         #endregion
 
         #region 系统开关
@@ -64,16 +64,21 @@ namespace Invalid_Checker
 
         static void Main(string[] args)
         {
-            #region 局部变量声明
+
+            #region 初始化
+            //--------------------------------------------------------------------------局部变量声明-------------------------------------------------------------------------------------------
             //校验线程数组
             Thread[] threadarr = new Thread[ThreadNum];
+            //初始化预设参数
+            Invalid_Init();
             #endregion
 
             #region 主任务逻辑
+            //--------------------------------------------------------------------------主任务逻辑-------------------------------------------------------------------------------------------
             //复活代理IP推送线程
-            Task.Factory.StartNew(() => { APIHelper.PushRelive(); });
+            Task.Factory.StartNew(() => { PublicFunc.PushRelive(); });
             //睡眠代理IP推送线程
-            Task.Factory.StartNew(() => { APIHelper.PushSleep(); });
+            Task.Factory.StartNew(() => { PublicFunc.PushSleep(); });
             //验IP线程
             for (int i = 0; i < ThreadNum; i++)
             {
@@ -88,7 +93,7 @@ namespace Invalid_Checker
                 while (GetCmd)
                 {
                     //获取命令
-                    Command cmd = APIHelper.AcceptCmd();
+                    Command cmd = PublicFunc.AcceptCmd();
                     //执行命令
                     RunCmd(cmd);
                     Thread.Sleep(GetCmd_Delay);
@@ -98,15 +103,27 @@ namespace Invalid_Checker
             //获取IP线程 死循环
             while (GetProxy)
             {
-                APIHelper.PushSleep();
+                PublicFunc.PushSleep();
                 Thread.Sleep(GetProxy_Delay);
             }
             #endregion
         }
 
-        private static void RunCmd(Command cmd)
+        #region 逻辑函数
+        /// <summary>
+        /// 失效校验节点初始化
+        /// </summary>
+        private static void Invalid_Init()
         {
-            throw new NotImplementedException();
+            if(!CheckConfigPath())
+            {
+                Console.WriteLine(PublicMessage.CherkConfigFail);
+            }
+            else
+            {
+                //读取配置文件信息  为全局参数赋值
+                throw new NotImplementedException();
+            }
         }
         /// <summary>
         /// 线程函数
@@ -115,5 +132,27 @@ namespace Invalid_Checker
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+
+        #region 辅助函数
+        /// <summary>
+        /// 校验配置文件路径
+        /// </summary>
+        /// <returns></returns>
+        private static bool CheckConfigPath()
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 执行远程命令
+        /// </summary>
+        /// <param name="cmd"></param>
+        private static void RunCmd(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }
