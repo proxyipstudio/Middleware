@@ -28,7 +28,7 @@ namespace PublicLib
     /// </summary>
     public class ProxyIpFilter
     {
-        int _Delay = 0;
+        int _Delay = 15000;
         String _Province = String.Empty;
         String _City = String.Empty;
         String _Operator = String.Empty;
@@ -37,16 +37,6 @@ namespace PublicLib
         String _VPSIp = String.Empty;
         String _VPSNum = String.Empty;
         String _Port = String.Empty;
-        List<int> _UserCodeList = new List<int>();
-
-        /// <summary>
-        /// 用户代号列表
-        /// </summary>
-        public List<int> UserCodeList
-        {
-            get { return _UserCodeList; }
-            set { _UserCodeList = value; }
-        } 
 
         /// <summary>
         /// 端口号
@@ -126,7 +116,7 @@ namespace PublicLib
     /// <summary>
     ///  匿名度枚举声明
     /// </summary>
-    public enum Anonymity { 透明 = 0, 普通匿名 = 1, 高度匿名 = 2 };
+    public enum Anonymity { 全部 = 0, 透明 = 1, 匿名 = 2 };
     /// <summary>
     /// 代理IP子类 具有匿名的延迟等详细信息
     /// </summary>
@@ -316,7 +306,6 @@ namespace PublicLib
     [Serializable()]
     public class ProxyIPTransIn<T>
     {
-
         String _guid = String.Empty;
 
         /// <summary>
@@ -336,8 +325,6 @@ namespace PublicLib
             get { return _ProxyIPList; }
             set { _ProxyIPList = value; }
         }
-
-        int _Count = 0;
 
         public int Count
         {
@@ -369,8 +356,6 @@ namespace PublicLib
             get { return _ProxyIPList; }
             set { _ProxyIPList = value; }
         }
-
-        int _Count = 0;
 
         public int Count
         {

@@ -15,5 +15,6 @@ namespace MiddleWareService.Models
         public const String TableName_UserInfo = "UserInfo";
         public const String TableName_AliveCatch = "AliveCatch";
         public const String TableName_UserCatch = "UserCatch ";
+        public const String TableName_PortSet = "PortSet ";
     }
 }

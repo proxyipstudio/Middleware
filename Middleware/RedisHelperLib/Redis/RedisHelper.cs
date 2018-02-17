@@ -15,10 +15,11 @@ using Newtonsoft.Json;
 namespace RedisHelperLib.Redis
 {
     /// <summary>
-    /// Redis 助手
+    /// Redis 助手 
     /// </summary>
-    public class RedisHelper
+    public  class RedisHelper
     {
+
         /// <summary>
         /// 获取 Redis 连接对象
         /// </summary>
@@ -34,6 +35,21 @@ namespace RedisHelperLib.Redis
 
             return _connMultiplexer;
         }
+
+        #region 单例相关
+        /// <summary>
+        /// 单例对象声明
+        /// </summary>
+        private static RedisHelper _instance = null;
+        /// <summary>
+        /// 获得单例对象
+        /// </summary>
+        /// <returns></returns>
+        public static RedisHelper GetInstance()
+        {
+            return _instance;
+        }
+        #endregion
 
         #region 其它
 
@@ -80,7 +96,7 @@ namespace RedisHelperLib.Redis
         /// <summary>
         /// redis 连接对象
         /// </summary>
-        public static IConnectionMultiplexer _connMultiplexer;
+        private static IConnectionMultiplexer _connMultiplexer;
 
         /// <summary>
         /// 默认的 Key 值（用来当作 RedisKey 的前缀）
@@ -107,9 +123,13 @@ namespace RedisHelperLib.Redis
             _connMultiplexer = ConnectionMultiplexer.Connect(ConnectionString);
             DefaultKey = ConfigurationManager.AppSettings["Redis.DefaultKey"];
             AddRegisterEvent();
+            _instance = new RedisHelper();
         }
-
-        public RedisHelper(int db = 0)
+        /// <summary>
+        /// 私有化构造函数防止实例化
+        /// </summary>
+        /// <param name="db"></param>
+        private RedisHelper(int db = 0)
         {
             _db = _connMultiplexer.GetDatabase(db);
         }
@@ -977,6 +997,22 @@ namespace RedisHelperLib.Redis
         #endregion List 操作
 
         #region Set 操作
+        public void SetAddRange(String redisKey, String []members,bool prefix = true)
+        {
+            redisKey =prefix? AddKeyPrefix(redisKey):redisKey;
+            foreach (var item in members)
+            {
+                _db.SetAdd(redisKey, item);
+            }
+        }
+        public void SetAddRange<T>(String redisKey, IEnumerable<T> members, bool prefix = true)
+        {
+            redisKey = prefix ? AddKeyPrefix(redisKey) : redisKey;
+            foreach (var item in members)
+            {
+                _db.SetAdd(redisKey, Serialize(item));
+            }
+        }
         public bool SetAdd(String redisKey,String member)
         {
             redisKey = AddKeyPrefix(redisKey);
